@@ -31,23 +31,34 @@
     }
   },
   {
-    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "context": "Workspace",
     "bindings": {
+      // Lazy git
       "space g g": [
         "task::Spawn",
         {
-          "task_name": "lazygit",
+          "task_name": "Lazygit",
           "reveal_target": "center"
         }
       ],
-      "space space": [
+      // Side panel toggle
+      "space e": "vim::ToggleProjectPanelFocus",
+      // Television full text search
+      "f g": [
         "task::Spawn",
         {
-          "task_name": "fzf",
+          "task_name": "Text search",
           "reveal_target": "center"
         }
       ],
-      "space e": "vim::ToggleProjectPanelFocus"
+      // Television file finder
+      "f f": [
+        "task::Spawn",
+        {
+          "task_name": "File finder",
+          "reveal_target": "center"
+        }
+      ]
     }
   },
   {

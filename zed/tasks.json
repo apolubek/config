@@ -1,19 +1,25 @@
 // Project tasks configuration. See https://zed.dev/docs/tasks for documentation.
-//
-// Example:
 [
   {
-    "label": "lazygit",
-    "command": "EDITOR=\"zed\" lazygit",
-    "hide": "on_success",
+    "label": "Lazygit",
+    "command": "zed \"$(lazygit)\"",
+    "hide": "always",
     "use_new_terminal": true,
     "allow_concurrent_runs": false
   },
   {
-    "label": "fzf",
-    "command": "~/.config/zed/scripts/fzf.sh",
+    "label": "File finder",
+    "command": "zed \"$(tv files)\"",
     "hide": "always",
-    "use_new_terminal": true
+    "use_new_terminal": true,
+    "allow_concurrent_runs": true
+  },
+  {
+    "label": "Text search",
+    "command": "zed \"$(tv text)\"",
+    "hide": "always",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": true
   },
   {
     "label": "Example task",
