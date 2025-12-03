@@ -26,7 +26,7 @@ fzf --layout=default --preview-window=up:60%:wrap \
     FILE={1}
     LINE={2}
     if [[ -n "$FILE" && -n "$LINE" && -f "$FILE" ]]; then
-      bat --style=numbers,plain --color=always --theme=tokyonight --highlight-line {2} {1}
+      bat --style=numbers,plain --color=always --theme=gruvbox-dark --highlight-line {2} {1}
     else
       echo ""
     fi
