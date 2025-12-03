@@ -1,0 +1,83 @@
+[
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "ctrl-u": [
+        "action::Sequence",
+        ["vim::ScrollUp", "editor::ScrollCursorCenter"]
+      ],
+      "ctrl-d": [
+        "action::Sequence",
+        ["vim::ScrollDown", "editor::ScrollCursorCenter"]
+      ],
+
+      "ctrl-f": [
+        "action::Sequence",
+        ["vim::PageDown", "editor::ScrollCursorCenter"]
+      ],
+      "ctrl-b": [
+        "action::Sequence",
+        ["vim::PageUp", "editor::ScrollCursorCenter"]
+      ],
+
+      "n": [
+        "action::Sequence",
+        ["vim::MoveToNextMatch", "editor::ScrollCursorCenter"]
+      ],
+      "shift-n": [
+        "action::Sequence",
+        ["vim::MoveToPreviousMatch", "editor::ScrollCursorCenter"]
+      ]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      "space g g": [
+        "task::Spawn",
+        {
+          "task_name": "lazygit",
+          "reveal_target": "center"
+        }
+      ],
+      "space space": [
+        "task::Spawn",
+        {
+          "task_name": "fzf",
+          "reveal_target": "center"
+        }
+      ],
+      "space e": "vim::ToggleProjectPanelFocus"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "x": "project_panel::Cut",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      "q": "workspace::ToggleLeftDock",
+      "space e": "vim::ToggleProjectPanelFocus",
+      "f": "project_panel::NewSearchInDirectory",
+      // collapse all and expand root
+      "space c a": [
+        "action::Sequence",
+        [
+          "project_panel::CollapseAllEntries",
+          "project_panel::ScrollCursorTop",
+          "menu::SelectFirst",
+          "project_panel::ExpandSelectedEntry"
+        ]
+      ],
+      // Navigate between panel
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  }
+]
