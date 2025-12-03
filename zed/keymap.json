@@ -1,6 +1,6 @@
 [
   {
-    "context": "VimControl && !menu",
+    "context": "VimControl && !showing_completions",
     "bindings": {
       "ctrl-u": [
         "action::Sequence",
@@ -9,8 +9,12 @@
       "ctrl-d": [
         "action::Sequence",
         ["vim::ScrollDown", "editor::ScrollCursorCenter"]
-      ],
-
+      ]
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
       "ctrl-f": [
         "action::Sequence",
         ["vim::PageDown", "editor::ScrollCursorCenter"]
@@ -19,7 +23,8 @@
         "action::Sequence",
         ["vim::PageUp", "editor::ScrollCursorCenter"]
       ],
-
+      "ctrl-u": "vim::ScrollUp",
+      "ctrl-d": "vim::ScrollDown",
       "n": [
         "action::Sequence",
         ["vim::MoveToNextMatch", "editor::ScrollCursorCenter"]

@@ -2,24 +2,33 @@
 [
   {
     "label": "Lazygit",
-    "command": "zed \"$(lazygit)\"",
+    "command": "zed \"$(EDITOR=\"zed\" lazygit)\"",
     "hide": "always",
     "use_new_terminal": true,
-    "allow_concurrent_runs": false
+    "allow_concurrent_runs": false,
+    "shell": {
+      "program": "sh"
+    }
   },
   {
     "label": "File finder",
     "command": "zed \"$(tv files)\"",
     "hide": "always",
     "use_new_terminal": true,
-    "allow_concurrent_runs": true
+    "allow_concurrent_runs": true,
+    "shell": {
+      "program": "sh"
+    }
   },
   {
     "label": "Text search",
     "command": "zed \"$(tv text)\"",
     "hide": "always",
     "use_new_terminal": true,
-    "allow_concurrent_runs": true
+    "allow_concurrent_runs": true,
+    "shell": {
+      "program": "sh"
+    }
   },
   {
     "label": "Example task",
