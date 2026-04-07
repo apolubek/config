@@ -7,39 +7,28 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "lsp": {
-    "vtsls": {
-      "settings": {
-        "typescript": {
-          "updateImportsOnFileMove": {
-            "enabled": "always"
-          }
-        },
-        "javascript": {
-          "updateImportsOnFileMove": {
-            "enabled": "always"
-          }
-        }
-      },
-      "enable_lsp_tasks": true
-    }
-  },
   "languages": {
     "TypeScript": {
       "format_on_save": "on",
-      "language_servers": ["vtsls", "eslint"],
-      // "language_servers": ["tsgo", "vtsls", "eslint"],
+      "language_servers": ["tsgo", "vtsls", "eslint"],
       // "language_servers": ["tsgo", "typescript-language-server"],
     },
   },
   "edit_predictions": {
-    "provider": "zed",
     "mode": "subtle",
   },
+  "features": {
+    "edit_prediction_provider": "zed",
+  },
   "agent_servers": {
-    "claude-acp": {
-      "type": "registry"
-    }
+    "codex": {
+      "favorite_config_option_values": {
+        "reasoning_effort": [
+          "high"
+        ]
+      },
+      "default_mode": "auto",
+    },
   },
   "disable_ai": false,
   "show_edit_predictions": true,

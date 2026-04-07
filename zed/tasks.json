@@ -7,8 +7,8 @@
     "use_new_terminal": true,
     "allow_concurrent_runs": false,
     "shell": {
-      "program": "sh"
-    }
+      "program": "sh",
+    },
   },
   {
     "label": "File finder",
@@ -17,8 +17,8 @@
     "use_new_terminal": true,
     "allow_concurrent_runs": true,
     "shell": {
-      "program": "sh"
-    }
+      "program": "sh",
+    },
   },
   {
     "label": "Text search",
@@ -27,8 +27,26 @@
     "use_new_terminal": true,
     "allow_concurrent_runs": true,
     "shell": {
-      "program": "sh"
-    }
+      "program": "sh",
+    },
+  },
+  {
+    "label": "Code review (codex)",
+    "command": "git diff main..HEAD | codex review -",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "shell": {
+      "program": "zsh",
+    },
+  },
+  {
+    "label": "Code review (critique)",
+    "command": "critique review main HEAD",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "shell": {
+      "program": "zsh",
+    },
   },
   {
     "label": "Example task",
@@ -75,8 +93,8 @@
     // Whether to show the task line in the output of the spawned task, defaults to `true`.
     "show_summary": true,
     // Whether to show the command line in the output of the spawned task, defaults to `true`.
-    "show_command": true
+    "show_command": true,
     // Represents the tags for inline runnable indicators, or spawning multiple tasks at once.
     // "tags": []
-  }
+  },
 ]
