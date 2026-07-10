@@ -7,27 +7,45 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "cli_default_open_behavior": "new_window",
+  "project_panel": {
+    "dock": "left",
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "git_panel": {
+    "tree_view": true,
+    "dock": "left",
+  },
   "lsp": {
     "vtsls": {
       "settings": {
         "typescript": {
           "updateImportsOnFileMove": {
-            "enabled": "always"
-          }
+            "enabled": "always",
+          },
         },
         "javascript": {
           "updateImportsOnFileMove": {
-            "enabled": "always"
-          }
-        }
+            "enabled": "always",
+          },
+        },
       },
-      "enable_lsp_tasks": true
-    }
+      "enable_lsp_tasks": true,
+    },
   },
   "languages": {
     "TypeScript": {
       "format_on_save": "on",
-      "language_servers": ["vtsls", "eslint"],
+      "formatter": [
+        { "code_action": "source.organizeImports" },
+        "language_server",
+      ],
+      "language_servers": ["vtsls", "oxlint", "oxfmt"],
       // "language_servers": ["tsgo", "vtsls", "eslint"],
       // "language_servers": ["tsgo", "typescript-language-server"],
     },
@@ -38,8 +56,12 @@
   },
   "agent_servers": {
     "claude-acp": {
-      "type": "registry"
-    }
+      "default_config_options": {
+        "effort": "high",
+        "model": "claude-fable-5[1m]"
+      },
+      "type": "registry",
+    },
   },
   "disable_ai": false,
   "show_edit_predictions": true,
@@ -54,6 +76,7 @@
   "buffer_font_family": "FiraMono Nerd Font Mono",
   "relative_line_numbers": "wrapped",
   "agent": {
+    "dock": "right",
     "default_model": {
       "provider": "zed.dev",
       "model": "claude-sonnet-4-5-thinking",

@@ -31,8 +31,8 @@
     },
   },
   {
-    "label": "Code review (codex)",
-    "command": "git diff main..HEAD | codex review -",
+    "label": "Code review (claude)",
+    "command": "claude make code review of current branch vs n",
     "use_new_terminal": true,
     "allow_concurrent_runs": false,
     "shell": {
@@ -41,7 +41,7 @@
   },
   {
     "label": "Code review (critique)",
-    "command": "critique review main HEAD",
+    "command": "critique review main HEAD --agent claude",
     "use_new_terminal": true,
     "allow_concurrent_runs": false,
     "shell": {

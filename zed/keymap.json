@@ -70,7 +70,7 @@
       "space a r": [
         "task::Spawn",
         {
-          "task_name": "Code review (codex)",
+          "task_name": "Code review (claude)",
           "reveal_target": "center",
         },
       ],
