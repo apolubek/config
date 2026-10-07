@@ -72,3 +72,15 @@ key = "ctrl+l"
 type = "plugin_action"
 command = "local.vim-navigator.right"
 description = "Vim-aware pane right"
+
+[[keys.command]]
+key = "ctrl+u"
+type = "shell"
+command = "~/.config/herdr/scripts/pane-scroll.sh up"
+description = "Scroll pane up half a screen (vim apps get the key)"
+
+[[keys.command]]
+key = "ctrl+d"
+type = "shell"
+command = "~/.config/herdr/scripts/pane-scroll.sh down"
+description = "Scroll pane down half a screen (vim apps get the key)"
