@@ -12,7 +12,7 @@ return {
     dependencies = { "folke/tokyonight.nvim" },
     config = function()
       require("gruvbox").setup({
-        contrast = "hard",
+        contrast = "",
       })
       vim.cmd("colorscheme " .. EcoVim.colorscheme)
       -- overrides in config.colorscheme are tokyonight-specific
