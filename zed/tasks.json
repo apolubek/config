@@ -32,7 +32,7 @@
   },
   {
     "label": "Code review (claude)",
-    "command": "claude make code review of current branch vs n",
+    "command": "claude 'make code review of current branch vs main'",
     "use_new_terminal": true,
     "allow_concurrent_runs": false,
     "shell": {
@@ -41,7 +41,16 @@
   },
   {
     "label": "Code review (critique)",
-    "command": "critique review main HEAD --agent claude",
+    "command": "critique review main HEAD --agent claude --model default",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "shell": {
+      "program": "zsh",
+    },
+  },
+  {
+    "label": "Code review (diffity)",
+    "command": "diffity main",
     "use_new_terminal": true,
     "allow_concurrent_runs": false,
     "shell": {

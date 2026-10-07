@@ -74,6 +74,13 @@
           "reveal_target": "center",
         },
       ],
+      "space a d": [
+        "task::Spawn",
+        {
+          "task_name": "Code review (diffity)",
+          "reveal_target": "center",
+        },
+      ],
     },
   },
   {
