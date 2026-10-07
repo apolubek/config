@@ -84,3 +84,11 @@ key = "ctrl+d"
 type = "shell"
 command = "~/.config/herdr/scripts/pane-scroll.sh down"
 description = "Scroll pane down half a screen (vim apps get the key)"
+
+# Ghostty sends cmd+backspace as a key (super+backspace=unbind in Ghostty);
+# send the shell's kill-line (ctrl+u) to the pane, since ctrl+u itself scrolls.
+[[keys.command]]
+key = "cmd+backspace"
+type = "shell"
+command = "\"${HERDR_BIN_PATH:-herdr}\" pane send-keys \"$HERDR_ACTIVE_PANE_ID\" ctrl+u"
+description = "Delete to start of line"
