@@ -1,0 +1,9 @@
+# Allowlist: track config only; logs, sockets, sessions, installed plugins are runtime state
+*
+!.gitignore
+!config.toml
+!plugins.sh
+!plugins/
+plugins/*
+!plugins/config/
+!plugins/config/**
