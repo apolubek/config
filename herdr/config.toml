@@ -39,9 +39,9 @@ focus_agent = "prefix+ctrl+1..9"
 
 [[keys.command]]
 key = "prefix+e"
-type = "plugin_action"
-command = "chmarax.herdr-nvim.toggle"
-description = "nvim sidebar"
+type = "shell"
+command = "~/.config/herdr/scripts/nvim-sidebar.sh"
+description = "nvim sidebar (remembers width)"
 
 [[keys.command]]
 key = "prefix+o"

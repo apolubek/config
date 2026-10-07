@@ -7,3 +7,5 @@
 plugins/*
 !plugins/config/
 !plugins/config/**
+!scripts/
+!scripts/**
