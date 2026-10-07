@@ -1,5 +1,12 @@
 Snacks = Snacks
 
+-- Move focus to the neighbouring herdr pane (no-op outside herdr)
+local function herdr_focus(direction)
+  local pane = vim.env.HERDR_PANE_ID
+  if not pane then return end
+  vim.system({ vim.env.HERDR_BIN_PATH or "herdr", "pane", "focus", "--direction", direction, "--pane", pane })
+end
+
 return {
   {
     "folke/snacks.nvim",
@@ -12,6 +19,15 @@ return {
       input        = { enabled = true },
       notifier     = { enabled = true },
       explorer     = { enabled = true },
+      lazygit      = {
+        win = {
+          keys = {
+            -- herdr sends ctrl+h/l into nvim; lazygit's terminal would swallow them
+            herdr_left  = { "<c-h>", function() herdr_focus("left") end,  mode = "t" },
+            herdr_right = { "<c-l>", function() herdr_focus("right") end, mode = "t" },
+          },
+        },
+      },
       picker       = {
         enabled = true,
         explorer = {
