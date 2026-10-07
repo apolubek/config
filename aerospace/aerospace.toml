@@ -204,7 +204,8 @@ ctrl-alt-s = 'exec-and-forget open -a /Applications/Slack.app'
 # alt-q = 'exec-and-forget open -a "/System/Applications/QuickTime Player.app"'
 # alt-w = 'exec-and-forget open -a /Applications/WezTerm.app'
 alt-f = 'exec-and-forget open -a /System/Library/CoreServices/Finder.app'
-alt-i = 'exec-and-forget open -a "/Applications/Zed.app"'
+# Focus Ghostty if herdr running, else launch Ghostty with herdr
+alt-i = '''exec-and-forget /bin/bash -c 'if pgrep -qx herdr; then open -a /Applications/Ghostty.app; else open -na /Applications/Ghostty.app --args -e /opt/homebrew/bin/herdr; fi' '''
 alt-b = 'exec-and-forget open -a "/Applications/Zen.app"'
 alt-q = 'close'
 
