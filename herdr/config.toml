@@ -92,3 +92,11 @@ key = "cmd+backspace"
 type = "shell"
 command = "\"${HERDR_BIN_PATH:-herdr}\" pane send-keys \"$HERDR_ACTIVE_PANE_ID\" ctrl+u"
 description = "Delete to start of line"
+
+# Ghostty's cmd+k clear_screen is performable-only, so it falls through on
+# herdr's alt screen; forward the shell's clear (ctrl+l) to the pane.
+[[keys.command]]
+key = "cmd+k"
+type = "shell"
+command = "\"${HERDR_BIN_PATH:-herdr}\" pane send-keys \"$HERDR_ACTIVE_PANE_ID\" ctrl+l"
+description = "Clear pane"
