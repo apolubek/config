@@ -26,5 +26,15 @@ return {
     event = "VeryLazy",
     config = true,
   },
-  { "ChmaraX/herdr-nvim", opts = {} },
+  {
+    "ChmaraX/herdr-nvim",
+    opts = {},
+    config = function(_, opts)
+      local herdr = require("herdr-nvim")
+      herdr.setup(opts)
+      -- the sidebar daemon calls setup() again on VimEnter; a second run
+      -- warns "not overriding existing map" for every map set above
+      herdr.setup = function() end
+    end,
+  },
 }
