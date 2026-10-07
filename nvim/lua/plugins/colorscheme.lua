@@ -1,13 +1,24 @@
 return {
   {
+    -- kept installed: galaxyline reads tokyonight.colors
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
+  },
+  {
+    "ellisonleao/gruvbox.nvim",
+    lazy = false,
+    priority = 1000,
+    dependencies = { "folke/tokyonight.nvim" },
     config = function()
-      -- load the colorscheme here
-      -- vim.cmd([[colorscheme tokyonight]])
+      require("gruvbox").setup({
+        contrast = "hard",
+      })
       vim.cmd("colorscheme " .. EcoVim.colorscheme)
-      require("config.colorscheme")
+      -- overrides in config.colorscheme are tokyonight-specific
+      if EcoVim.colorscheme:match("^tokyonight") then
+        require("config.colorscheme")
+      end
     end,
   },
 }

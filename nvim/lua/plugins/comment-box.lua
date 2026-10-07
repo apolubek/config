@@ -1,6 +1,7 @@
 return {
   {
     "LudoPinelli/comment-box.nvim",
+    enabled = false,
     lazy = true,
     keys = {
       { "<leader>ac", "<cmd>lua require('comment-box').llbox()<CR>", desc = "comment box" },

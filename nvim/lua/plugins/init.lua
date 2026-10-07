@@ -26,4 +26,5 @@ return {
     event = "VeryLazy",
     config = true,
   },
+  { "ChmaraX/herdr-nvim", opts = {} },
 }
