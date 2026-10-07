@@ -1,3 +1,18 @@
 git:
-  paging:
-    pager: critique --stdin
+  pagers:
+    - pager: env FORCE_COLOR=3 critique --stdin --theme gruvbox
+
+customCommands:
+  # Generate commit message from staged diff via Claude (/caveman:caveman-commit)
+  # and save it as lazygit's pending commit draft; then press `c` to review/commit.
+  - key: <c-g>
+    context: files
+    description: AI commit message (caveman-commit)
+    loadingText: Generating commit message (claude)...
+    command: >-
+      sh -c 'git diff --cached --quiet && { echo "nothing staged" >&2; exit 1; };
+      msg=$(git diff --cached | head -c 60000 |
+      claude -p --model haiku --settings "{\"disableAllHooks\":true,\"includeCoAuthoredBy\":false}"
+      "/caveman:caveman-commit Staged diff on stdin. Output only the raw commit message (subject, optional body), nothing else: no quotes, no code fences, no Co-Authored-By or other trailers.")
+      && [ -n "$msg" ]
+      && printf "%s\n" "$msg" | grep -iv "^co-authored-by:" > "$(git rev-parse --git-dir)/LAZYGIT_PENDING_COMMIT"'
