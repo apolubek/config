@@ -41,3 +41,17 @@ vim.api.nvim_create_autocmd(
     end
   }
 )
+
+-- A resize (e.g. herdr sidebar re-attach) can leave terminal windows like
+-- lazygit scrolled sideways, hiding their left edge; scroll them back.
+vim.api.nvim_create_autocmd({ "VimResized", "UIEnter" }, {
+  callback = function()
+    vim.schedule(function()
+      for _, win in ipairs(vim.api.nvim_list_wins()) do
+        if vim.bo[vim.api.nvim_win_get_buf(win)].buftype == "terminal" then
+          vim.api.nvim_win_call(win, function() vim.fn.winrestview({ leftcol = 0 }) end)
+        end
+      end
+    end)
+  end,
+})
