@@ -9,3 +9,6 @@ plugins/*
 !plugins/config/**
 !scripts/
 !scripts/**
+
+.omc
+

@@ -8,7 +8,7 @@ set -u
 herdr=${HERDR_BIN_PATH:-herdr}
 pane=${HERDR_ACTIVE_PANE_ID:?}
 socket=${HERDR_SOCKET_PATH:-$HOME/.config/herdr/herdr.sock}
-passthrough=${HERDR_SCROLL_PASSTHROUGH:-'^(g?n?vim?x?|view|lazygit|less|more|man|fzf|tig|htop|btop|yazi)$'}
+passthrough=${HERDR_SCROLL_PASSTHROUGH:-'^(g?n?vim?x?|view|lazygit|less|more|man|fzf|tig|htop|btop|yazi|tuicr)$'}
 
 case "${1:-}" in
   up) key=ctrl+u ;;

@@ -28,6 +28,9 @@ next_workspace = "prefix+shift+j"
 previous_workspace = "prefix+shift+k"
 switch_workspace = "prefix+shift+1..9"
 
+# Tabs: prefix+a creates a tab (replaces default prefix+c)
+new_tab = "prefix+a"
+
 # Built-in actions win over [[keys.command]]; move them so plugin keys work
 edit_scrollback = "prefix+shift+e"
 open_notification_target = "prefix+shift+o"
