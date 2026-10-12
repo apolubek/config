@@ -30,8 +30,9 @@ return {
       },
       picker       = {
         enabled = true,
-        explorer = {
-          opts = {
+        sources = {
+          explorer = {
+            follow_file = false, -- reveal current file only on open (see <C-e>), not on every buffer switch
             win = {
               list = {
                 keys = {
@@ -39,7 +40,7 @@ return {
                 }
               }
             }
-          }
+          },
         },
         previewers = {
           git = {
@@ -81,7 +82,24 @@ return {
       -- ╭─────────────────────────────────────────────────────────╮
       -- │ Picker                                                  │
       -- ╰─────────────────────────────────────────────────────────╯
-      { "<C-e>",       function() Snacks.picker.explorer() end,                                desc = "explorer" },
+      {
+        "<C-e>",
+        function()
+          local explorer = Snacks.picker.get({ source = "explorer" })[1]
+          if explorer then return explorer:close() end
+          local file = vim.api.nvim_buf_get_name(0)
+          if file == "" or vim.fn.filereadable(file) == 0 then return Snacks.explorer.open() end
+          -- The explorer filters out dotfiles and gitignored files, so reveal could not land on them
+          local hidden = file:find("/%.") ~= nil
+          local ignored = vim.system({ "git", "check-ignore", "-q", file }):wait().code == 0
+          Snacks.explorer.open({
+            hidden = hidden,
+            ignored = ignored,
+            on_show = function() Snacks.explorer.reveal({ file = file }) end,
+          })
+        end,
+        desc = "explorer",
+      },
       { "<C-p>",       function() Snacks.picker.smart() end,                                   desc = "smart files" },
       { "<S-p>",       function() Snacks.picker.grep() end,                                    desc = "grep" },
       { "<leader>pw",  function() Snacks.picker.grep_word() end,                               desc = "grep word",                   mode = { "n", "v" } },

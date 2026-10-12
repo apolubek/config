@@ -7,27 +7,40 @@ return {
 
       conform.setup({
         formatters_by_ft = {
-          css = { "prettierd", "prettier" },
-          graphql = { "prettierd", "prettier" },
-          html = { "prettierd", "prettier" },
-          javascript = { "prettierd", "prettier" },
-          javascriptreact = { "prettierd", "prettier" },
-          json = { "prettierd", "prettier" },
+          css = { "oxfmt", "prettierd", "prettier" },
+          graphql = { "oxfmt", "prettierd", "prettier" },
+          html = { "oxfmt", "prettierd", "prettier" },
+          javascript = { "oxfmt", "prettierd", "prettier" },
+          javascriptreact = { "oxfmt", "prettierd", "prettier" },
+          json = { "oxfmt", "prettierd", "prettier" },
           lua = { "stylua" },
-          markdown = { "prettierd", "prettier" },
+          markdown = { "oxfmt", "prettierd", "prettier" },
           python = { "isort", "black" },
           sql = { "sql-formatter" },
-          svelte = { "prettierd", "prettier" },
-          typescript = { "prettierd", "prettier", "sql-formatter" },
-          typescriptreact = { "prettierd", "prettier" },
-          yaml = { "prettier" },
+          svelte = { "oxfmt", "prettierd", "prettier" },
+          typescript = { "oxfmt", "prettierd", "prettier", "sql-formatter" },
+          typescriptreact = { "oxfmt", "prettierd", "prettier" },
+          yaml = { "oxfmt", "prettier" },
           xml = { "xmlformatter" },
+        },
+        formatters = {
+          -- Only in projects that opted into oxc; elsewhere fall through to prettier
+          oxfmt = {
+            condition = function(_, ctx)
+              return vim.fs.find(
+                { ".oxfmtrc.json", ".oxfmtrc.jsonc", "oxfmt.config.ts", "node_modules/.bin/oxfmt" },
+                { upward = true, path = ctx.dirname }
+              )[1] ~= nil
+            end,
+          },
         },
         format_on_save = {
           timeout_ms = 1000,
           lsp_format = "fallback",
         },
-        stop_after_first = true,
+        default_format_opts = {
+          stop_after_first = true,
+        },
       })
 
       vim.keymap.set({ "n" }, "<leader>f", function()

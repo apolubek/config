@@ -9,6 +9,9 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = { "*.txt", 
 -- Show `` in specific files
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = { "*.txt", "*.md", "*.json" },
   command = "setlocal conceallevel=0" })
+-- Wrap long lines in diff windows (e.g. Gitsigns diffthis), restore nowrap after
+vim.api.nvim_create_autocmd("OptionSet", { pattern = "diff",
+  callback = function() vim.wo.wrap = vim.wo.diff end })
 
 -- Attach specific keybindings in which-key for specific filetypes
 local present, _ = pcall(require, "which-key")

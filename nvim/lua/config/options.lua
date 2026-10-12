@@ -66,6 +66,8 @@ vim.opt.fillchars:append('foldsep: ');
 vim.opt.fillchars:append('foldclose:');
 vim.opt.fillchars:append('vert:▕');
 vim.opt.fillchars:append('vertleft:▕');
+vim.opt.diffopt:append('iwhiteall');  --- Ignore all whitespace changes in diffs, like git -w (also used by gitsigns)
+vim.opt.diffopt:append('followwrap'); --- Don't force nowrap in diff windows
 
 for k, v in pairs(options) do
   vim.opt[k] = v
