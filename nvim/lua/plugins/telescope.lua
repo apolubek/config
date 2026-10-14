@@ -75,7 +75,9 @@ return {
         }
       }
 
-      vim.keymap.set("n", "fg", builtin.live_grep, { desc = "Telescope find grep" })
+      -- Literal search: ( { . * [ match themselves. Use <S-p> (snacks grep) for regex
+      vim.keymap.set("n", "fg", function() builtin.live_grep({ additional_args = { "--fixed-strings" } }) end,
+        { desc = "Telescope find grep (literal)" })
       vim.keymap.set("n", "ff", builtin.find_files, { desc = "Telescope find files" })
     end,
     dependencies = {

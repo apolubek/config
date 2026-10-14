@@ -23,7 +23,6 @@ return {
             return vim.o.columns * 0.4
           end
         end,
-        open_mapping = [[<F12>]],
         ---@diagnostic disable-next-line: unused-local
         on_open = function(term)
         end,
@@ -71,7 +70,6 @@ return {
       })
     end,
     keys = {
-      { "<F12>" },
       { "<Leader>at", "<cmd>ToggleTerm direction=float<CR>", desc = "terminal float" }
     }
   }

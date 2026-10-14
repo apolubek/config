@@ -102,6 +102,8 @@ return {
       },
       { "<C-p>",       function() Snacks.picker.smart() end,                                   desc = "smart files" },
       { "<S-p>",       function() Snacks.picker.grep() end,                                    desc = "grep" },
+      { "<F12>",       function() Snacks.picker.lsp_definitions() end,                         desc = "go to definition" },
+      { "gs",          function() Snacks.picker.lsp_symbols({ filter = { default = true }, layout = { preset = "vscode" } }) end, desc = "go to symbol" },
       { "<leader>pw",  function() Snacks.picker.grep_word() end,                               desc = "grep word",                   mode = { "n", "v" } },
 
       { "<leader>pl",  function() Snacks.picker.projects() end,                                desc = "projects list" },

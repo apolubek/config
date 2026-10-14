@@ -8,7 +8,7 @@ return {
   -- ╭─────────────────────────────────────────────────────────╮
   -- │ General plugins                                         │
   -- ╰─────────────────────────────────────────────────────────╯
-  { "AndrewRadev/switch.vim", lazy = false },
+  { "AndrewRadev/switch.vim", lazy = false, init = function() vim.g.switch_mapping = "" end }, -- used via <C-a>/<C-x>; frees `gs` for symbols
   { "tpope/vim-repeat",       lazy = false },
   { "tpope/vim-speeddating",  lazy = false },
   {
