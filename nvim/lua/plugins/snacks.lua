@@ -44,10 +44,24 @@ return {
         sources = {
           explorer = {
             follow_file = false, -- reveal current file only on open (see <C-e>), not on every buffer switch
+            actions = {
+              -- Like the built-in `y` (explorer_yank), but paths relative to cwd
+              explorer_yank_relative = function(picker)
+                if vim.fn.mode():find("^[vV]") then picker.list:select() end
+                local files = {} ---@type string[]
+                for _, item in ipairs(picker:selected({ fallback = true })) do
+                  table.insert(files, vim.fn.fnamemodify(Snacks.picker.util.path(item), ":."))
+                end
+                picker.list:set_selected()
+                vim.fn.setreg("+", table.concat(files, "\n"))
+                Snacks.notify.info("Yanked " .. table.concat(files, ", "))
+              end,
+            },
             win = {
               list = {
                 keys = {
                   ["<c-]>"] = "explorer_cd",
+                  ["Y"] = { "explorer_yank_relative", mode = { "n", "x" } },
                 }
               }
             }

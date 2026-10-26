@@ -12,6 +12,13 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, { pattern = { "*.txt", 
 -- Wrap long lines in diff windows (e.g. Gitsigns diffthis), restore nowrap after
 vim.api.nvim_create_autocmd("OptionSet", { pattern = "diff",
   callback = function() vim.wo.wrap = vim.wo.diff end })
+-- Reload files changed outside nvim (e.g. Claude Code in another pane); autoread alone only fires on focus/events
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+  command = "if mode() != 'c' | silent! checktime | endif" })
+local reload_timer = vim.uv.new_timer()
+reload_timer:start(1000, 1000, vim.schedule_wrap(function()
+  if vim.fn.mode() ~= "c" then vim.cmd("silent! checktime") end
+end))
 
 -- Attach specific keybindings in which-key for specific filetypes
 local present, _ = pcall(require, "which-key")

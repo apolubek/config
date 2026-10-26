@@ -41,6 +41,7 @@ return {
       -- your own keymap.
       keymap = {
         preset = 'super-tab',
+        ["<M-Space>"] = { "show", "show_documentation", "hide_documentation" },
         ["<S-k>"] = { "scroll_documentation_up", "fallback" },
         ["<S-j>"] = { "scroll_documentation_down", "fallback" }
       },
