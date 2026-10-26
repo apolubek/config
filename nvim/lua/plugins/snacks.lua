@@ -20,6 +20,17 @@ return {
       notifier     = { enabled = true },
       explorer     = { enabled = true },
       lazygit      = {
+        -- Panes spawned by herdr/nvim get a curated PATH that omits ~/.bun/bin,
+        -- so lazygit's diffRenderers (`critique`) fail with "No such file or
+        -- directory". Prepend the tool dirs here so spawn is env-independent.
+        env = {
+          PATH = table.concat({
+            vim.fn.expand("~/.bun/bin"),
+            vim.fn.expand("~/.local/bin"),
+            vim.fn.expand("~/.cargo/bin"),
+            vim.env.PATH,
+          }, ":"),
+        },
         win = {
           keys = {
             -- herdr sends ctrl+h/l into nvim; lazygit's terminal would swallow them

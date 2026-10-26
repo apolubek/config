@@ -1,6 +1,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "master",
     event = "BufReadPre",
     config = function()
       require 'nvim-treesitter.configs'.setup {
@@ -103,7 +104,7 @@ return {
     dependencies = {
       "hiphish/rainbow-delimiters.nvim",
       "JoosepAlviste/nvim-ts-context-commentstring",
-      "nvim-treesitter/nvim-treesitter-textobjects",
+      { "nvim-treesitter/nvim-treesitter-textobjects", branch = "master" },
       "RRethy/nvim-treesitter-textsubjects",
     },
   },
