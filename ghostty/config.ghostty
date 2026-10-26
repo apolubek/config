@@ -56,6 +56,9 @@ font-family=FiraMono Nerd Font Mono
 # Option isn't Alt here; send ESC DEL so shells (and herdr's alt+backspace) delete a word
 keybind = alt+backspace=text:\x1b\x7f
 
+# Send ESC SPACE so nvim sees <M-Space> (blink completion menu)
+keybind = alt+space=text:\x1b\x20
+
 # Send real cmd+backspace (not ^U) so herdr can tell it from ctrl+u scroll
 keybind = super+backspace=unbind
 
